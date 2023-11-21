@@ -10,8 +10,8 @@ import {
 import { getStyle } from '@coreui/utils';
 import { ChartjsComponent } from '@coreui/angular-chartjs';
 import { combineLatest, filter, map, switchMap } from 'rxjs';
-import { ManageApiService } from 'src/app/main/manage-auth/services/manage-api.service';
-import { ConnectedToServerEvent } from 'src/app/main/manage-auth/event/connected-to-server.event';
+import { ManageApiService } from '../../manage-auth/services/manage-api.service';
+import { ConnectedToServerEvent } from '../../manage-auth/event/connected-to-server.event';
 
 @Component({
   selector: 'app-widgets-dropdown',

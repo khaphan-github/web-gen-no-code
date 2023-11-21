@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
-import { ManageApiService } from '../../main/manage-auth/services/manage-api.service';
+import { Component, OnInit, inject } from '@angular/core';
+import { ManageApiService } from '../manage-auth/services/manage-api.service';
 
-import { DashboardChartsData, IChartProps } from './dashboard-charts-data';
 import { Observable } from 'rxjs';
 import { SResponse } from '../../core/config/http-client/response-base';
-import { GeneratedAPI } from 'src/app/main/manage-auth/services/interfaces/response/generated-api.interface';
+import { GeneratedAPI } from '../manage-auth/interfaces/response/generated-api.interface';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 interface IUser {
   name: string;
@@ -26,6 +25,7 @@ interface IUser {
   styleUrls: ['dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  private modalService = inject(NgbModal);
   constructor(
     private readonly service: ManageApiService,
   ) { }
@@ -41,7 +41,6 @@ export class DashboardComponent implements OnInit {
   public visible = false;
 
   toggleLiveDemo(api: GeneratedAPI) {
-    console.log(api);
     this.visible = !this.visible;
   }
 

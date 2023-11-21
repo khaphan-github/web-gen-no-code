@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { ClassToggleService, HeaderComponent } from '@coreui/angular';
-import { ManageApiService } from '../../../main/manage-auth/services/manage-api.service';
+import { ManageApiService } from '../../../views/manage-auth/services/manage-api.service';
 import { LOCALSTORAGE_STORAGED_KEY } from 'src/app/core/config/storage-key/localstorage.const';
-import { ConnectedToServerEvent } from 'src/app/main/manage-auth/event/connected-to-server.event';
+import { ConnectedToServerEvent } from 'src/app/views/manage-auth/event/connected-to-server.event';
 
 @Component({
   selector: 'app-default-header',

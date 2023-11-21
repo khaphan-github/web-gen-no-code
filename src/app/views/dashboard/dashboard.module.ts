@@ -44,7 +44,6 @@ import { WidgetsModule } from '../widgets/widgets.module';
     TableModule,
     WidgetsModule,
     BadgeModule,
-    ModalModule,
   ],
   declarations: [DashboardComponent]
 })

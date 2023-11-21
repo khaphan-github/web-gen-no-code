@@ -1,4 +1,4 @@
-import { ManageAuthModule } from './main/manage-auth/manage-auth.module';
+import { ManageAuthModule } from './views/manage-auth/manage-auth.module';
 import { NgModule } from '@angular/core';
 import { CommonModule, HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { BrowserModule, Title } from '@angular/platform-browser';
