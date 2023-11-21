@@ -1,0 +1,74 @@
+<app-widgets-dropdown></app-widgets-dropdown>
+<c-row *ngIf="this.list$ | async as viewModel">
+  <c-col xs>
+    <c-card class="mb-4">
+      <c-card-header>Danh sách API (Prefix: <strong>http://host/api/v1/app/2024/schema</strong>) sẽ không gồm các
+        bảng có sẵn trong hệ thống </c-card-header>
+      <c-card-body>
+        <table [hover]="true" [responsive]="true" [striped]="true" align="middle" cTable class="mb-0 border">
+          <thead cTableColor="light">
+            <tr>
+              <th class="text-center">
+                <svg cIcon name="cilCaretBottom"></svg>
+              </th>
+              <th>Đường dẫn</th>
+              <th class="text-left">Bảng</th>
+              <th>Lịch sử thay đổi</th>
+              <th></th>
+              <th class="text-center">Trạng thái</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let api of viewModel.data; index as i" style="cursor: pointer;" (click)="this.toggleLiveDemo(api)">
+              <td class="text-center">
+                {{ i + 1 }}
+              </td>
+              <td>
+                <div><strong>...{{ api.api_path }}</strong></div>
+                <div class="small text-medium-emphasis text-nowrap">
+                  <span>
+                    Phương thức: <strong>{{ api.http_method }}</strong> | Hành động: <strong>{{ api.action}}</strong>
+                    <!-- {{ api.state }} | Registered: {{ api.registered }} -->
+                  </span>
+                </div>
+              </td>
+              <td class="text-left">
+                <div class="small text-medium-emphasis">Schema: public</div>
+                <div class="fw-semibold text-nowrap">public.{{ api.table_name }}</div>
+              </td>
+              <td>
+                <div class="small text-medium-emphasis">Ngày tạo</div>
+                <div class="fw-semibold text-nowrap">{{ api.created_at | date:"hh:mm MM/dd/yyyy" : "UTC" }}</div>
+              </td>
+
+              <td>
+                <div class="small text-medium-emphasis">Cập nhật lần cuối</div>
+                <div class="fw-semibold text-nowrap">{{ api.updated_at | date:"hh:mm MM/dd/yyyy" : "UTC" }}</div>
+              </td>
+              <td class="text-center">
+                <c-badge *ngIf="api.enable" color="success" shape="rounded-pill">Đang hoạt động</c-badge>
+                <c-badge *ngIf="!api.enable" color="dark" shape="rounded-pill">Dừng hoạt động</c-badge>
+              </td>
+
+            </tr>
+          </tbody>
+        </table>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
+
+<!-- MODAL REGION -->
+<c-modal id="liveDemoModal" [visible]="visible" (visibleChange)="handleLiveDemoChange($event)">
+  <c-modal-header>
+    <h5 cModalTitle>Modal title</h5>
+    <!-- <button (click)="toggleLiveDemo()"></button> -->
+  </c-modal-header>
+  <c-modal-body>Woohoo, you are reading this text in a modal!</c-modal-body>
+  <c-modal-footer>
+    <!-- <button (click)="toggleLiveDemo()" >
+      Close
+    </button> -->
+    <button cButton color="primary">Save changes</button>
+  </c-modal-footer>
+</c-modal>
