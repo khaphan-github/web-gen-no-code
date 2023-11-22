@@ -20,14 +20,14 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-drop' }
   },
   {
-    name: 'Chính sách',
-    url: '/manage-api/policy',
-    iconComponent: { name: 'cil-notes' },
-  },
-  {
     name: 'APIs',
     url: '/manage-api/apis',
     iconComponent: { name: 'cil-pencil' }
+  },
+  {
+    name: 'Nhóm quyền',
+    url: '/manage-api/role',
+    iconComponent: { name: 'cil-spreadsheet' }
   },
   {
     name: 'Database',

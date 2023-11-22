@@ -1,11 +1,14 @@
-<div *ngIf="this.list$ | async as viewModel">
-  <c-row>
+<h2 id="getting-started">Danh sách API trong hệ thống</h2>
+<p>Danh sách API (Prefix: <strong>http://host/api/v1/app/2024/schema</strong>) sẽ không gồm các
+  bảng có sẵn trong hệ thống </p>
+<div>
+  <c-row class="fade show">
     <c-col xs>
       <c-card class="mb-4">
-        <c-card-header>Danh sách API (Prefix: <strong>http://host/api/v1/app/2024/schema</strong>) sẽ không gồm các
-          bảng có sẵn trong hệ thống </c-card-header>
+        <c-card-header></c-card-header>
         <c-card-body>
-          <table [hover]="true" [responsive]="true" [striped]="true" align="middle" cTable class="mb-0 border">
+          <table *ngIf="this.list$ | async as viewModel; else showNotFoundContent" [hover]="true" [responsive]="true"
+            [striped]="true" align="middle" cTable class="mb-0 border">
             <thead cTableColor="light">
               <tr>
                 <th class="text-center">
@@ -54,6 +57,9 @@
               </tr>
             </tbody>
           </table>
+          <ng-template #showNotFoundContent>
+            <app-waiting-to-load [show]="true"></app-waiting-to-load>
+          </ng-template>
         </c-card-body>
       </c-card>
     </c-col>
