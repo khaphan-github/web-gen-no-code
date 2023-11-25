@@ -23,6 +23,7 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 
 import { WidgetsModule } from '../widgets/widgets.module';
+import { DocumentComponent } from './document/document.component';
 
 @NgModule({
   imports: [
@@ -45,7 +46,7 @@ import { WidgetsModule } from '../widgets/widgets.module';
     WidgetsModule,
     BadgeModule,
   ],
-  declarations: [DashboardComponent]
+  declarations: [DashboardComponent, DocumentComponent]
 })
 export class DashboardModule {
 }

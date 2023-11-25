@@ -5,35 +5,38 @@
         <c-card-group>
           <c-card class="p-4">
             <c-card-body>
-              <form cForm>
-                <h1>Login</h1>
-                <p class="text-medium-emphasis">Sign In to your account</p>
+              <form [formGroup]="form">
+                <h1>Kết nối</h1>
+                <p class="text-medium-emphasis">Vui lòng điền tên miền api của bạn cùng với khóa bí mật để
+                  đăng nhập</p>
                 <c-input-group class="mb-3">
                   <span cInputGroupText>
-                    <svg cIcon name="cilUser"></svg>
+                    <svg cIcon name="cilHome"></svg>
                   </span>
-                  <input autoComplete="username" cFormControl placeholder="Username" />
+                  <input formControlName="domain" autoComplete="domain" cFormControl
+                    placeholder="http://localhost:3000" />
                 </c-input-group>
+
                 <c-input-group class="mb-4">
                   <span cInputGroupText>
                     <svg cIcon name="cilLockLocked"></svg>
                   </span>
-                  <input
-                    autoComplete="current-password"
-                    cFormControl
-                    placeholder="Password"
-                    type="password"
-                  />
+                  <input formControlName="secretKey" autoComplete="current-password" cFormControl
+                    placeholder="Secret-key" type="password" />
+                  <div *ngIf="this.errorMessage" class="text-danger">
+                    {{ this.errorMessage}}
+                  </div>
                 </c-input-group>
+
                 <c-row>
                   <c-col xs="6">
-                    <button cButton class="px-4" color="primary">
-                      Login
+                    <button cButton class="px-4" color="primary" (click)="submitForm()">
+                      Kết nối
                     </button>
                   </c-col>
                   <c-col class="text-right" xs="6">
                     <button cButton class="px-0" color="link">
-                      Forgot password?
+                      Xem hướng dẫn tại dây
                     </button>
                   </c-col>
                 </c-row>

@@ -1,5 +1,5 @@
 import { ManageAuthModule } from './views/manage-auth/manage-auth.module';
-import { NgModule } from '@angular/core';
+import { NgModule, OnInit, inject } from '@angular/core';
 import { CommonModule, HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -39,6 +39,10 @@ import {
 } from '@coreui/angular';
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientInterceptor } from './core/web-api/interceptor';
+import { AppService } from './app.service';
+import { Router } from '@angular/router';
 
 const APP_CONTAINERS = [
   DefaultFooterComponent,
@@ -89,10 +93,23 @@ const INTERATED_MODULE = [
       provide: LocationStrategy,
       useClass: HashLocationStrategy
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpClientInterceptor,
+      multi: true,
+    },
     IconSetService,
     Title
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {
+export class AppModule implements OnInit {
+  private appService = inject(AppService);
+  private route = inject(Router);
+
+  ngOnInit(): void {
+    if (!this.appService.isValidSecretKey()) {
+      this.route.navigate(['login']);
+    }
+  }
 }

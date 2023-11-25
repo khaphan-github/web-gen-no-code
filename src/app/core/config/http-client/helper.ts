@@ -1,6 +1,6 @@
-import { LOCALSTORAGE_STORAGED_KEY } from './../../../core/config/storage-key/localstorage.const';
+import { STORAGED_KEY } from './../../../core/config/storage-key/localstorage.const';
 
 export const apiPathBuilder = (endpoint: string) => {
-  const domain = localStorage.getItem(LOCALSTORAGE_STORAGED_KEY.modules.manageApi.connection.hostName);
-  return `${domain}/api/v1/app/9999/schema${endpoint}`
+  const domain = localStorage.getItem(STORAGED_KEY.modules.manageApi.connection.hostName) ?? 'http://localhost:3000';
+  return `${domain}/api/v1/app/2024/schema${endpoint}`
 }

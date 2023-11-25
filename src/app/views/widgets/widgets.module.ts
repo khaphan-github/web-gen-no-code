@@ -15,14 +15,11 @@ import { ChartjsModule } from '@coreui/angular-chartjs';
 
 
 import { WidgetsBrandComponent } from './widgets-brand/widgets-brand.component';
-import { ChartSample, WidgetsDropdownComponent } from './widgets-dropdown/widgets-dropdown.component';
 import { WidgetsEComponent } from './widgets-e/widgets-e.component';
 
 @NgModule({
   declarations: [
     WidgetsBrandComponent,
-    WidgetsDropdownComponent,
-    ChartSample,
     WidgetsEComponent
   ],
   imports: [
@@ -39,7 +36,6 @@ import { WidgetsEComponent } from './widgets-e/widgets-e.component';
   ],
   exports: [
     WidgetsBrandComponent,
-    WidgetsDropdownComponent
   ]
 })
 export class WidgetsModule {

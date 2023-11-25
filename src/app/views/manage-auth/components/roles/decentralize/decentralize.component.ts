@@ -29,7 +29,7 @@ export class DecentralizeComponent implements OnInit {
   ngOnInit() {
     // Get one;
     _.forEach(this.role.metadata?.apis, (value) => {
-      this.checkBoxHelper.handleOneChecked(true, { id: value});
+      this.checkBoxHelper.handleOneChecked(true, { id: value });
     });
 
     this.list$ = this.service.apiList();
@@ -53,8 +53,14 @@ export class DecentralizeComponent implements OnInit {
       },
     });
   }
+
   onClose() {
     this.activeModal.close();
   }
 
+  activeAll(apis: Array<GeneratedAPI>, mode: boolean) {
+    _.forEach(apis, (api) => {
+      this.checkBoxHelper.handleOneChecked(mode, api);
+    })
+  }
 }

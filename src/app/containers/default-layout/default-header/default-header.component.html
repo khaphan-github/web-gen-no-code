@@ -20,38 +20,14 @@
       </c-nav-item> -->
     </c-header-nav>
     <c-header-nav class="d-none d-lg-flex">
-      <c-nav-item>
-        <a cNavLink>
-          Connection:
-        </a>
-      </c-nav-item>
-      <div class="row " style="float: right;">
-        <div class="col-auto">
-          <input 
-            [(ngModel)]="this.hostName" 
-            (ngModelChange)="onChangeHostname($event)"
-            cFormControl 
-            placeholder="http://localhost:3000"
-            [disabled]="this.disableInput"
-            type="text" style="width: 300px;">
-        </div>
-        <div class="col-auto">
-          <input 
-            [(ngModel)]="this.connectionSecretKey" 
-            (ngModelChange)="onChangeSecretKey($event)"
-            cFormControl placeholder="kqhkiG9w0BAQEFAASBAQCS9"
-            [disabled]="this.disableInput"
-            type="password" style="width: 300px;">
-        </div>
-        <div class="col-auto">
-          <button cButton (click)="onConnect()" [disabled]="this.disableButton" style="width: 120px;">
-            <c-spinner aria-hidden="true" size="sm" *ngIf="this.showSpinner"></c-spinner>     {{ this.currentDisplayText }}
-          </button>
-        </div>
+      <div class="col-auto">
+        <button cButton (click)="onDisconnect()" style="width: 120px;">
+          {{ this.currentDisplayText }}
+        </button>
       </div>
     </c-header-nav>
 
-    <!-- 
+    <!--
     <c-header-nav class="d-none d-lg-flex">
       <c-nav-item>
         <a routerLink="./" cNavLink>
@@ -80,7 +56,7 @@
   </c-container> -->
 </ng-container>
 <!--</c-header>-->
-<!-- 
+<!--
 <ng-template #userDropdown>
   <c-dropdown alignment="end" variant="nav-item">
     <button
